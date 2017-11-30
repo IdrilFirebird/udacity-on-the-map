@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  PinListViewController.swift
 //  OnTheMap
 //
 //  Created by Sebastian on 29.11.17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class PinListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
