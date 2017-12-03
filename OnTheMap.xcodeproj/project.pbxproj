@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E636AFF1FD467AA00B0D7A8 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */; };
 		9E655A561FCEAC650081168C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E655A551FCEAC650081168C /* AppDelegate.swift */; };
 		9E655A581FCEAC650081168C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E655A571FCEAC650081168C /* MapViewController.swift */; };
 		9E655A5A1FCEAC650081168C /* PinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E655A591FCEAC650081168C /* PinListViewController.swift */; };
 		9E655A5D1FCEAC650081168C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E655A5B1FCEAC650081168C /* Main.storyboard */; };
 		9E655A5F1FCEAC650081168C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E655A5E1FCEAC650081168C /* Assets.xcassets */; };
 		9E655A621FCEAC650081168C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E655A601FCEAC650081168C /* LaunchScreen.storyboard */; };
+		9EABE1A51FD32664007E44C9 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABE1A41FD32664007E44C9 /* StudentInformation.swift */; };
+		9EABE1A71FD32B1C007E44C9 /* LocationSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABE1A61FD32B1C007E44C9 /* LocationSearchController.swift */; };
+		9EABE1A91FD33239007E44C9 /* AddLinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EABE1A81FD33239007E44C9 /* AddLinkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		9E655A521FCEAC650081168C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E655A551FCEAC650081168C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E655A571FCEAC650081168C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +29,9 @@
 		9E655A5E1FCEAC650081168C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E655A611FCEAC650081168C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E655A631FCEAC650081168C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9EABE1A41FD32664007E44C9 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
+		9EABE1A61FD32B1C007E44C9 /* LocationSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchController.swift; sourceTree = "<group>"; };
+		9EABE1A81FD33239007E44C9 /* AddLinkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLinkController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,43 @@
 		9E655A541FCEAC650081168C /* OnTheMap */ = {
 			isa = PBXGroup;
 			children = (
+				9EABE1AD1FD3353E007E44C9 /* Model */,
+				9EABE1AA1FD334FB007E44C9 /* Controller */,
 				9E655A551FCEAC650081168C /* AppDelegate.swift */,
-				9E655A571FCEAC650081168C /* MapViewController.swift */,
-				9E655A591FCEAC650081168C /* PinListViewController.swift */,
 				9E655A5B1FCEAC650081168C /* Main.storyboard */,
 				9E655A5E1FCEAC650081168C /* Assets.xcassets */,
 				9E655A601FCEAC650081168C /* LaunchScreen.storyboard */,
 				9E655A631FCEAC650081168C /* Info.plist */,
 			);
 			path = OnTheMap;
+			sourceTree = "<group>";
+		};
+		9EABE1AA1FD334FB007E44C9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				9E655A571FCEAC650081168C /* MapViewController.swift */,
+				9E655A591FCEAC650081168C /* PinListViewController.swift */,
+				9EABE1AC1FD3351F007E44C9 /* PinCreationControllers */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		9EABE1AC1FD3351F007E44C9 /* PinCreationControllers */ = {
+			isa = PBXGroup;
+			children = (
+				9EABE1A61FD32B1C007E44C9 /* LocationSearchController.swift */,
+				9EABE1A81FD33239007E44C9 /* AddLinkController.swift */,
+			);
+			path = PinCreationControllers;
+			sourceTree = "<group>";
+		};
+		9EABE1AD1FD3353E007E44C9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9EABE1A41FD32664007E44C9 /* StudentInformation.swift */,
+				9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,9 +175,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9EABE1A51FD32664007E44C9 /* StudentInformation.swift in Sources */,
+				9EABE1A71FD32B1C007E44C9 /* LocationSearchController.swift in Sources */,
 				9E655A5A1FCEAC650081168C /* PinListViewController.swift in Sources */,
 				9E655A561FCEAC650081168C /* AppDelegate.swift in Sources */,
+				9E636AFF1FD467AA00B0D7A8 /* GlobalData.swift in Sources */,
 				9E655A581FCEAC650081168C /* MapViewController.swift in Sources */,
+				9EABE1A91FD33239007E44C9 /* AddLinkController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

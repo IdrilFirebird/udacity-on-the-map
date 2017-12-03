@@ -26,7 +26,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @objc func addPin() {
+        let controller: UIViewController
+        controller = storyboard?.instantiateViewController(withIdentifier: "setPinViewModal") as! UIViewController
+        controller.modalPresentationStyle = .overFullScreen
+        present(controller, animated: true, completion: nil)
         print("addPin function")
+    }
+    @IBAction func unwindToMainMenu(sender: UIStoryboardSegue)
+    {
     }
     
     @objc func refreshPins() {
