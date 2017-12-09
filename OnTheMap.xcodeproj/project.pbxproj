@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E58799C1FDC505A00BE1E4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E58799B1FDC505A00BE1E4C /* LoginViewController.swift */; };
 		9E636AFF1FD467AA00B0D7A8 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */; };
+		9E636B011FD4759C00B0D7A8 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E636B001FD4759C00B0D7A8 /* UdacityClient.swift */; };
+		9E636B031FD482A400B0D7A8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E636B021FD482A400B0D7A8 /* Helper.swift */; };
 		9E655A561FCEAC650081168C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E655A551FCEAC650081168C /* AppDelegate.swift */; };
 		9E655A581FCEAC650081168C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E655A571FCEAC650081168C /* MapViewController.swift */; };
 		9E655A5A1FCEAC650081168C /* PinListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E655A591FCEAC650081168C /* PinListViewController.swift */; };
@@ -20,7 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E58799B1FDC505A00BE1E4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
+		9E636B001FD4759C00B0D7A8 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		9E636B021FD482A400B0D7A8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		9E655A521FCEAC650081168C /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E655A551FCEAC650081168C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E655A571FCEAC650081168C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +77,7 @@
 				9E655A5E1FCEAC650081168C /* Assets.xcassets */,
 				9E655A601FCEAC650081168C /* LaunchScreen.storyboard */,
 				9E655A631FCEAC650081168C /* Info.plist */,
+				9E636B021FD482A400B0D7A8 /* Helper.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -81,6 +88,7 @@
 				9E655A571FCEAC650081168C /* MapViewController.swift */,
 				9E655A591FCEAC650081168C /* PinListViewController.swift */,
 				9EABE1AC1FD3351F007E44C9 /* PinCreationControllers */,
+				9E58799B1FDC505A00BE1E4C /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -99,6 +107,7 @@
 			children = (
 				9EABE1A41FD32664007E44C9 /* StudentInformation.swift */,
 				9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */,
+				9E636B001FD4759C00B0D7A8 /* UdacityClient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,12 +184,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E636B011FD4759C00B0D7A8 /* UdacityClient.swift in Sources */,
 				9EABE1A51FD32664007E44C9 /* StudentInformation.swift in Sources */,
 				9EABE1A71FD32B1C007E44C9 /* LocationSearchController.swift in Sources */,
 				9E655A5A1FCEAC650081168C /* PinListViewController.swift in Sources */,
 				9E655A561FCEAC650081168C /* AppDelegate.swift in Sources */,
+				9E636B031FD482A400B0D7A8 /* Helper.swift in Sources */,
 				9E636AFF1FD467AA00B0D7A8 /* GlobalData.swift in Sources */,
 				9E655A581FCEAC650081168C /* MapViewController.swift in Sources */,
+				9E58799C1FDC505A00BE1E4C /* LoginViewController.swift in Sources */,
 				9EABE1A91FD33239007E44C9 /* AddLinkController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

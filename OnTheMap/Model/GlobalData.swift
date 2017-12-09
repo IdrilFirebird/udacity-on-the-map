@@ -16,6 +16,9 @@ class Global {
     var userFirstName: String = "Max"
     var userLastName: String = "Tester"
     
+    var userID: String? = nil
+    var sessionID: String? = nil
+    
    
     class func sharedInstance() -> Global {
         struct Singleton {

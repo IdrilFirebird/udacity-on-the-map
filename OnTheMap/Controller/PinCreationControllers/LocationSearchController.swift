@@ -31,7 +31,7 @@ class LocationSearchController: UIViewController {
     
     @IBAction func searchLocation(_ sender: Any) {
         guard let locationString = locationStringTextField.text, locationString != "" else {
-            showErrorAlert(message: "You have to enter your location first")
+            showErrorAlert(viewController: self, message: "You have to enter your location first")
             return
         }
         
@@ -47,7 +47,7 @@ class LocationSearchController: UIViewController {
             // TODO: implement loading overlay
             
             guard error == nil else {
-                self.showErrorAlert(message: "Could not find your location")
+                showErrorAlert(viewController: self, message: "Could not find your location")
                 return
             }
             
@@ -70,16 +70,7 @@ class LocationSearchController: UIViewController {
         
     }
     
-    // move somewhere else
-    func showErrorAlert(message: String, dismissButtonTitle: String = "OK") {
-        let controller = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        
-        controller.addAction(UIAlertAction(title: dismissButtonTitle, style: .default) { (action: UIAlertAction!) in
-            controller.dismiss(animated: true, completion: nil)
-        })
-        
-        self.present(controller, animated: true, completion: nil)
-    }
+    
     
     /*
     // MARK: - Navigation
