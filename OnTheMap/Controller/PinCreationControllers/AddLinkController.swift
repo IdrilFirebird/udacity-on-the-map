@@ -48,7 +48,7 @@ class AddLinkController: UIViewController {
         // TODO: Check if URL is real url
         let studentURL = URL(string: linkTextField.text!)
         
-        let newStudentEntry = StudentInformation(firstName: Global.sharedInstance().userFirstName, lastName: Global.sharedInstance().userLastName, location: self.location!, link: studentURL!)
+        let newStudentEntry = StudentInformation(firstName: Global.sharedInstance().userFirstName, lastName: Global.sharedInstance().userLastName, location: self.location!, link: studentURL!, locationString: self.locationString!)
         
         Global.sharedInstance().students.append(newStudentEntry)
         

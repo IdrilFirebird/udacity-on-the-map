@@ -8,18 +8,38 @@
 
 import UIKit
 
-class PinListViewController: UIViewController {
+class PinListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        tableView.dataSource = self
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let url = Global.sharedInstance().students[indexPath.row].link {
+            UIApplication.shared.open(url)
+        } else {
+            showErrorAlert(viewController: self, message: "That's no link")
+        }
+    }
+    
+    
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let student = Global.sharedInstance().students[indexPath.row]
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "TableCell")
+        
+        cell.imageView?.image = #imageLiteral(resourceName: "icon_pin")
+        cell.textLabel?.text = "\(student.firstName) \(student.lastName)"
+        cell.detailTextLabel?.text = "\(student.link?.absoluteString ?? "")"
+        
+        return cell
+        
     }
 
-
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Global.sharedInstance().students.count
+    }
+    
 }
 

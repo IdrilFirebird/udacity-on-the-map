@@ -18,3 +18,18 @@ func showErrorAlert(viewController: UIViewController, message: String, dismissBu
     
     viewController.present(controller, animated: true, completion: nil)
 }
+
+
+func showLoadingIndicator(viewController: UIViewController) -> UIView {
+    let overlay = UIView(frame: UIScreen.main.bounds)
+    overlay.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    overlay.tag = Global.sharedInstance().loadingOverlayTag
+    let loadingIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    loadingIndicator.center = overlay.center
+    loadingIndicator.startAnimating()
+    
+    overlay.addSubview(loadingIndicator)
+
+    viewController.view.addSubview(overlay)
+    return overlay
+}

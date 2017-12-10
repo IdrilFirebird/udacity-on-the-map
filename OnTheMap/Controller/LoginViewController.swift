@@ -38,32 +38,34 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func loginAction(_ sender: Any) {
         
+        let loadingIndicatorView = showLoadingIndicator(viewController: self)
         let username = usernameTextField.text
         let password = passwordTextField.text
         
         guard username!.isEmpty == false, password!.isEmpty == false else {
-            showErrorAlert(viewController: self, message: "Username or Password empty!")
+            self.showErrorRemoveOverlay(message: "Username or Password empty!")
             return
         }
         
         let udacityClient = UdacityClient()
         
-        udacityClient.createUserSession(username: username!, password: password!) { (result: AnyObject?, error:NSError?) in
+        udacityClient.createUserSession(username: username!, password: password!) { (result, error) in
             
             DispatchQueue.main.async {
                 if let error = error {
-                    showErrorAlert(viewController: self, message: error.userInfo[NSLocalizedDescriptionKey] as! String)
+                    self.showErrorRemoveOverlay(message: error.userInfo[NSLocalizedDescriptionKey] as! String)
                     return
                 }
                 
-                if let userID = result?["userID"] as? String, let sessionID = result?["sessionID"] as? String {
+                if let userID = result?["userID"], let sessionID = result?["sessionID"] {
                     Global.sharedInstance().userID = userID
                     Global.sharedInstance().sessionID = sessionID
                 } else {
-                    showErrorAlert(viewController: self, message: "Session not found in response")
+                    self.showErrorRemoveOverlay(message: "Session not found in response")
                 }
                 
                 self.finishLoginShowApp()
+
             }
         }
     }
@@ -71,10 +73,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     
     func finishLoginShowApp()  {
+        view.viewWithTag(Global.sharedInstance().loadingOverlayTag)?.removeFromSuperview()
         let controller = storyboard!.instantiateViewController(withIdentifier: "MainNavigationController") as! UITabBarController
         present(controller, animated: true, completion: nil)
     }
     
+    
+    
+    private func showErrorRemoveOverlay(message: String) {
+        showErrorAlert(viewController: self, message: message)
+        view.viewWithTag(Global.sharedInstance().loadingOverlayTag)?.removeFromSuperview()
+    }
     
     /*
     // MARK: - Navigation

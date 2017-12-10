@@ -8,9 +8,12 @@
 
 import Foundation
 
+
+
 class Global {
     
 //    static let sharedInstance = Global()
+    let loadingOverlayTag = 63463
     
     var students:[StudentInformation] = []
     var userFirstName: String = "Max"
@@ -26,4 +29,18 @@ class Global {
         }
         return Singleton.sharedInstance
     }
+    
+    func loadStudentInfo(_ completionHandler: @escaping (Bool?, NSError?) -> Void) {
+        let udacitMapApiClient = UdacityMapApiClient()
+        udacitMapApiClient.getStudentsLocations() {(studentsInfo: [StudentInformation]?, error: NSError?) in
+            
+            guard (error == nil) else {
+                completionHandler(false, error)
+                return
+            }
+            Global.sharedInstance().students = studentsInfo!
+            completionHandler(true, nil)
+        }
+    }
+    
 }
