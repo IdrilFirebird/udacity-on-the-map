@@ -13,7 +13,6 @@ class LocationSearchController: UIViewController, UITextFieldDelegate {
 
     var locationString: String = ""
     var location: CLLocation?
-    var mapViewController: MapViewController?
     
     @IBOutlet weak var locationStringTextField: UITextField!
     
@@ -54,7 +53,6 @@ class LocationSearchController: UIViewController, UITextFieldDelegate {
             
             let controller = self.storyboard?.instantiateViewController(withIdentifier: "enterLinkView") as! AddLinkController
             controller.modalPresentationStyle = .overFullScreen
-            controller.mapViewController = self.mapViewController
             controller.location = self.location
             controller.locationString = self.locationString
             
@@ -66,20 +64,5 @@ class LocationSearchController: UIViewController, UITextFieldDelegate {
         
         
     }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        
-        
-    }
-    */
 
 }

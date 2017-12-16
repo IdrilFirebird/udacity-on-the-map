@@ -13,7 +13,7 @@ class AddLinkController: UIViewController, UITextFieldDelegate {
     
     var locationString: String?
     var location: CLLocation?
-    var mapViewController: MapViewController?
+//    var mapViewController: MapViewController?
     var ownStudentInfo: StudentInformation?
     
     @IBOutlet weak var linkTextField: UITextField!
@@ -51,10 +51,6 @@ class AddLinkController: UIViewController, UITextFieldDelegate {
         
     // MARK: Actions
     @IBAction func submitNewLocation(_ sender: Any) {
-        
-        // TODO: Check if URL is real url
-//        let studentURL = URL(string: linkTextField.text!)
-        // Check for object ID if student is already posted
         
         guard let studentURL = URL(string: linkTextField.text!), UIApplication.shared.canOpenURL(studentURL) else {
             showErrorAlert(viewController: self, message: "your entered text doesn't seem to be a valid link")
@@ -99,7 +95,7 @@ class AddLinkController: UIViewController, UITextFieldDelegate {
         Global.sharedInstance().ownStudentInfo = ownStudentInfo
         DispatchQueue.main.async {
             self.presentingViewController?.presentingViewController?.dismiss(animated: true) { () in
-                self.mapViewController?.refreshPins()
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshStudenData"), object: nil)
             }
         }
     }

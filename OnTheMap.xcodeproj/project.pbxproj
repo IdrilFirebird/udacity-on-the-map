@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9E2FF7591FE55CDA0099C9DD /* CostumTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FF7581FE55CDA0099C9DD /* CostumTabBar.swift */; };
+		9E2FF75B1FE585590099C9DD /* ViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2FF75A1FE585590099C9DD /* ViewControllerExtension.swift */; };
 		9E58799C1FDC505A00BE1E4C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E58799B1FDC505A00BE1E4C /* LoginViewController.swift */; };
 		9E636AFF1FD467AA00B0D7A8 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */; };
 		9E636B011FD4759C00B0D7A8 /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E636B001FD4759C00B0D7A8 /* UdacityClient.swift */; };
@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9E2FF7581FE55CDA0099C9DD /* CostumTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostumTabBar.swift; sourceTree = "<group>"; };
+		9E2FF75A1FE585590099C9DD /* ViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerExtension.swift; sourceTree = "<group>"; };
 		9E58799B1FDC505A00BE1E4C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9E636AFE1FD467AA00B0D7A8 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		9E636B001FD4759C00B0D7A8 /* UdacityClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 		9EABE1AA1FD334FB007E44C9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9E2FF7581FE55CDA0099C9DD /* CostumTabBar.swift */,
+				9E2FF75A1FE585590099C9DD /* ViewControllerExtension.swift */,
 				9E655A571FCEAC650081168C /* MapViewController.swift */,
 				9E655A591FCEAC650081168C /* PinListViewController.swift */,
 				9E58799B1FDC505A00BE1E4C /* LoginViewController.swift */,
@@ -211,13 +211,13 @@
 			files = (
 				9E636B011FD4759C00B0D7A8 /* UdacityClient.swift in Sources */,
 				9EABE1A51FD32664007E44C9 /* StudentInformation.swift in Sources */,
+				9E2FF75B1FE585590099C9DD /* ViewControllerExtension.swift in Sources */,
 				9E6AAF5E1FE54BBB00E30B26 /* GradientView.swift in Sources */,
 				9EABE1A71FD32B1C007E44C9 /* LocationSearchController.swift in Sources */,
 				9E655A5A1FCEAC650081168C /* PinListViewController.swift in Sources */,
 				9E655A561FCEAC650081168C /* AppDelegate.swift in Sources */,
 				9E9E8BB81FDC717500B44FD5 /* UdacityMapApiClient.swift in Sources */,
 				9E636B031FD482A400B0D7A8 /* Helper.swift in Sources */,
-				9E2FF7591FE55CDA0099C9DD /* CostumTabBar.swift in Sources */,
 				9E636AFF1FD467AA00B0D7A8 /* GlobalData.swift in Sources */,
 				9E655A581FCEAC650081168C /* MapViewController.swift in Sources */,
 				9E58799C1FDC505A00BE1E4C /* LoginViewController.swift in Sources */,

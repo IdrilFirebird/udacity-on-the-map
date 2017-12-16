@@ -8,7 +8,7 @@
 
 import UIKit
 
-// move somewhere else
+
 func showErrorAlert(viewController: UIViewController, message: String, dismissButtonTitle: String = "OK") {
     let controller = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
     

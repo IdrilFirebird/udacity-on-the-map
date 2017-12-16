@@ -12,16 +12,22 @@ class PinListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavBar(title: "Pin List")
+        addRefreshPinObserver()
+
         tableView.dataSource = self
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "dataUpdated"), object: nil)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let url = Global.sharedInstance().students[indexPath.row].link {
-            UIApplication.shared.open(url)
-        } else {
-            showErrorAlert(viewController: self, message: "That's no link")
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            } else {
+                showErrorAlert(viewController: self, message: "That's no link")
+            }
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     @objc func refreshTable() {
