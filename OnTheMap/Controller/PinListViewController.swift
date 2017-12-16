@@ -13,6 +13,7 @@ class PinListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name(rawValue: "dataUpdated"), object: nil)
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -23,6 +24,9 @@ class PinListViewController: UITableViewController {
         }
     }
     
+    @objc func refreshTable() {
+        tableView.reloadData()
+    }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

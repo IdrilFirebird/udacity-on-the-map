@@ -22,20 +22,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
         // Do any additional setup after loading the view.
     }
-
+    
+    
+    // MARK: TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         usernameTextField.resignFirstResponder()
         passwordTextField.resignFirstResponder()
         
         return true
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
+    //MARK: Actions
     @IBAction func loginAction(_ sender: Any) {
         
         let loadingIndicatorView = showLoadingIndicator(viewController: self)
@@ -96,3 +93,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     */
 
 }
+

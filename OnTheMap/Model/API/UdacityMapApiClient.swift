@@ -82,6 +82,7 @@ class UdacityMapApiClient {
         let bodyString = createStudentBody(student)
         let request = buildRequest(HTTPmethod: "POST", urlParameters: [:], pathExtension: nil, headers: headers, body: bodyString)
         
+        
         _ = execRequest(request) {(result, error) in
             guard error == nil else {
                 completionHander(nil, error)
@@ -104,7 +105,8 @@ class UdacityMapApiClient {
     func updateStudent(student: StudentInformation, completionHander:  @escaping (_ result: String?, _ error: NSError?) -> Void ) {
         
         let bodyString = createStudentBody(student)
-        let request = buildRequest(HTTPmethod: "PUT", urlParameters: [:], pathExtension: nil, headers: headers, body: bodyString)
+        // add objectID to path Extension
+        let request = buildRequest(HTTPmethod: "PUT", urlParameters: [:], pathExtension: "/\(student.objectId)", headers: headers, body: bodyString)
         
         _ = execRequest(request) {(result, error) in
             guard error == nil else {
@@ -217,9 +219,9 @@ class UdacityMapApiClient {
                     "lastName": student.lastName,
                     "mapString": student.mapString,
                     "mediaURL": student.link?.absoluteString,
-                    "latitude": String(format:"%f", student.location.coordinate.latitude),
-                    "longitude": String(format:"%f", student.location.coordinate.longitude)
-        ]
+                    "latitude": student.location.coordinate.latitude,
+                    "longitude": student.location.coordinate.longitude
+            ] as [String : Any]
         
         let bodyData = try! JSONSerialization.data(withJSONObject: body, options: [])
         return String(data: bodyData, encoding: String.Encoding.utf8)!

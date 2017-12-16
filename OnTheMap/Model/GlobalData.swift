@@ -22,6 +22,8 @@ class Global {
     var userID: String? = nil
     var sessionID: String? = nil
     
+    var ownStudentInfo: StudentInformation? = nil
+    
    
     class func sharedInstance() -> Global {
         struct Singleton {
@@ -39,8 +41,23 @@ class Global {
                 return
             }
             Global.sharedInstance().students = studentsInfo!
+            Global.sharedInstance().ownStudentInfo = self.findOwnMapEntry(students: studentsInfo!, userID: Global.sharedInstance().userID!)
             completionHandler(true, nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "dataUpdated"), object: nil)
+            }
+            
         }
+    }
+    
+    
+    func findOwnMapEntry(students: [StudentInformation], userID: String) -> StudentInformation? {
+        for student in students {
+            if student.uniqueKey == userID {
+                return student
+            }
+        }
+        return nil
     }
     
 }

@@ -14,34 +14,35 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+       
         mapView.delegate = self
         initNavigationBar()
         refreshPins()
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshAnnotaions), name: NSNotification.Name(rawValue: "dataUpdated"), object: nil)
+        
     }
 
-//    override func viewDidAppear(_ animated: Bool) {
-//        refreshAnnotaions()
-//    }
 
     @objc func addPin() {
-        let controller: UIViewController
-        controller = storyboard?.instantiateViewController(withIdentifier: "setPinViewModal") as! UIViewController
-        controller.modalPresentationStyle = .overFullScreen
-        present(controller, animated: true, completion: nil)
-        print("addPin function")
+        confirmAlert(alertMessage: "You have already a pin set, do you want to change it?", alertTitle: "Pin already set!", actionButtonLabel: "Change Pin") { (action) in
+            let controller = self.storyboard?.instantiateViewController(withIdentifier: "setPinViewModal") as! LocationSearchController
+            controller.mapViewController = self
+            controller.modalPresentationStyle = .overFullScreen
+            self.present(controller, animated: true, completion: nil)
+        }
     }
     @IBAction func unwindToMainMenu(sender: UIStoryboardSegue)
     {
     }
     
     @objc func logout() {
-        let udacityClient = UdacityClient()
-        udacityClient.destroySession() { (result, error) in
-            DispatchQueue.main.async {
-                self.navigationController?.dismiss(animated: true, completion: nil)
+        confirmAlert(alertMessage: "Do you wan't to logout?", alertTitle: "Logout", actionButtonLabel: "Logout") { (action) in
+            let udacityClient = UdacityClient()
+            udacityClient.destroySession() { (result, error) in
+                DispatchQueue.main.async {
+                    self.navigationController?.dismiss(animated: true, completion: nil)
+                }
             }
-            
         }
     }
     
@@ -55,13 +56,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     showErrorAlert(viewController: self, message: "Fetching students data went wrong, try agian")
                     return
                 }
-                self.refreshAnnotaions()
-                
             }
         }
     }
     
-    func refreshAnnotaions()  {
+    @objc func refreshAnnotaions()  {
         self.mapView.removeAnnotations(self.mapView.annotations)
         
         var studentPins = [MKPointAnnotation]()
@@ -72,7 +71,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             pin.title = "\(student.firstName) \(student.lastName)"
             pin.subtitle = "\(student.link?.absoluteString ?? "")"
             
-            
             studentPins.append(pin)
         }
         
@@ -82,17 +80,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let reuseId = "pin"
         
-        var pin = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        var pin = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKMarkerAnnotationView
         
         if pin == nil {
-            pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pin = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pin!.canShowCallout = true
             pin!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            pin!.image = #imageLiteral(resourceName: "icon_pin")
+            
         } else {
             pin!.annotation = annotation
         }
         
+        pin!.glyphImage = #imageLiteral(resourceName: "icon_pin")
         return pin
     }
     
@@ -116,6 +115,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let leftButton = UIBarButtonItem(title: "Logout" , style: .plain, target: self, action: #selector(logout))
         self.navigationItem.leftBarButtonItem = leftButton
     }
-
+    
+    func confirmAlert(alertMessage: String, alertTitle: String, actionButtonLabel: String, confirmActionHandler: @escaping (UIAlertAction) -> Void) {
+        let alertController = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel) { (handler: UIAlertAction) in
+            alertController.dismiss(animated: true, completion: nil)
+        })
+        
+        alertController.addAction(UIAlertAction(title: actionButtonLabel, style: .default, handler: confirmActionHandler))
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    
+    
 }
 
